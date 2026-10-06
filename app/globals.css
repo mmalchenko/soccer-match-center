@@ -1,26 +1,128 @@
 @import "tailwindcss";
+@import "./dark.theme.css";
+@import "./light.theme.css";
+
+/* Design tokens */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Pitch Dark */
+  --pitch-bg: #0a0e0d;
+  --pitch-glow: rgba(53, 226, 122, 0.15);
+  --pitch-surface: #141a18;
+  --pitch-surface-2: #1c2422;
+  --pitch-border: #263230;
+  --pitch-glass-border: rgba(255, 255, 255, 0.07);
+  --pitch-text: #f4f7f5;
+  --pitch-muted: #8fa39b;
+  --pitch-accent: #35e27a;
+  --pitch-accent-dark: #1fa85a;
+  --pitch-live: #ff4b4b;
+  --pitch-gold: #e8b94a;
+
+  /* Editorial Light */
+  --editorial-bg: #f6f4ef;
+  --editorial-surface: #ffffff;
+  --editorial-border: #e4e0d6;
+  --editorial-text: #1b2420;
+  --editorial-muted: #6b7570;
+  --editorial-accent: #0f5d3c;
+  --editorial-gold: #c9a227;
+  --editorial-live: #d6403a;
 }
+
+.theme-dark {
+  --pitch-bg: #0a0e0d;
+  --pitch-glow: rgba(53, 226, 122, 0.15);
+  --pitch-surface: #141a18;
+  --pitch-surface-2: #1c2422;
+  --pitch-border: #263230;
+  --pitch-glass-border: rgba(255, 255, 255, 0.07);
+  --pitch-text: #f4f7f5;
+  --pitch-muted: #8fa39b;
+  --pitch-accent: #35e27a;
+  --pitch-accent-dark: #1fa85a;
+  --pitch-live: #ff4b4b;
+  --pitch-gold: #e8b94a;
+}
+
+.theme-editorial {
+  --editorial-bg: #f6f4ef;
+  --editorial-surface: #ffffff;
+  --editorial-border: #e4e0d6;
+  --editorial-text: #1b2420;
+  --editorial-muted: #6b7570;
+  --editorial-accent: #0f5d3c;
+  --editorial-gold: #c9a227;
+  --editorial-live: #d6403a;
+}
+
+/* Tailwind v4 theme registration */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Pitch Dark colors */
+  --color-pitch-bg: var(--pitch-bg);
+  --color-pitch-surface: var(--pitch-surface);
+  --color-pitch-surface-2: var(--pitch-surface-2);
+  --color-pitch-border: var(--pitch-border);
+  --color-pitch-glass-border: var(--pitch-glass-border);
+  --color-pitch-text: var(--pitch-text);
+  --color-pitch-muted: var(--pitch-muted);
+  --color-pitch-accent: var(--pitch-accent);
+  --color-pitch-accent-dark: var(--pitch-accent-dark);
+  --color-pitch-live: var(--pitch-live);
+  --color-pitch-gold: var(--pitch-gold);
+
+  /* Editorial Light colors */
+  --color-editorial-bg: var(--editorial-bg);
+  --color-editorial-surface: var(--editorial-surface);
+  --color-editorial-border: var(--editorial-border);
+  --color-editorial-text: var(--editorial-text);
+  --color-editorial-muted: var(--editorial-muted);
+  --color-editorial-accent: var(--editorial-accent);
+  --color-editorial-gold: var(--editorial-gold);
+  --color-editorial-live: var(--editorial-live);
+
+  /* Border radius */
+  --radius-sm-plus: 10px;
+  --radius-md-plus: 14px;
+  --radius-lg-plus: 18px;
+  --radius-xl-plus: 22px;
+
+  /* Shadows */
+  --shadow-live: 0 0 18px rgba(255, 75, 75, 0.55);
+  --shadow-glow: 0 0 40px rgba(53, 226, 122, 0.25);
+
+  /* Backdrop blur — 18px per design spec */
+  --blur-xl: 18px;
+
+  /* Background image */
+  --background-image-pitch-glow: radial-gradient(
+    1100px 480px at 50% -60px,
+    rgba(53, 226, 122, 0.15),
+    transparent 65%
+  );
+
+  /* Typography */
+  --font-sans: var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), "IBM Plex Mono", monospace;
+  --font-display:
+    var(--font-bricolage-grotesque), "Bricolage Grotesque", sans-serif;
+  --font-serif: var(--font-fraunces), "Fraunces", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base reset */
+*,
+::before,
+::after {
+  border-style: solid;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--pitch-bg);
+  color: var(--pitch-text);
+  font-family: var(--font-sans);
+}
+
+img, video {
+  max-width: fit-content;
 }

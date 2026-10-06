@@ -1,0 +1,14 @@
+.main-nav {
+  li {
+    padding-right: 40px;
+
+    a {
+      color: var(--pitch-muted);
+
+      &:hover,
+      &.active {
+        color: var(--pitch-text);
+      }
+    }
+  }
+}

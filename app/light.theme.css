@@ -1,0 +1,48 @@
+/* Editorial Light — theme layer */
+
+/*
+  Solid card — white surface with warm border.
+  Usage: <div class="editorial-card rounded-lg-plus p-6">
+*/
+@utility editorial-card {
+  background-color: var(--editorial-surface);
+  border: 1px solid var(--editorial-border);
+}
+
+/*
+  LIVE badge.
+  Usage: <span class="editorial-live-badge inline-flex items-center gap-1.5
+                       text-xs font-bold pl-2.5 pr-3.5 py-1 rounded-full">
+           <span class="w-1.5 h-1.5 rounded-full bg-white"></span>78'
+         </span>
+*/
+@utility editorial-live-badge {
+  background-color: var(--editorial-live);
+  color: #ffffff;
+}
+
+/*
+  Gold CTA button — ranking highlights, primary calls to action.
+  Usage: <button class="editorial-btn-cta h-11 px-5 rounded-xl text-sm font-bold">
+*/
+@utility editorial-btn-cta {
+  background-color: var(--editorial-gold);
+  color: #ffffff;
+}
+
+/*
+  Primary action — links, text buttons.
+  Usage: <a class="editorial-link font-medium">See all matches</a>
+*/
+@utility editorial-link {
+  color: var(--editorial-accent);
+}
+
+/*
+  Ghost / outline button.
+  Usage: <button class="editorial-btn-ghost h-11 px-5 rounded-xl text-sm font-medium">
+*/
+@utility editorial-btn-ghost {
+  border: 1px solid var(--editorial-border);
+  color: var(--editorial-muted);
+}
