@@ -10,7 +10,7 @@ export default async function LiveMatch() {
   return (
     <>
       <div className="flex items-baseline gap-4">
-        <h2 className="md:text-2xl font-bold font-display">
+        <h2 className="md:text-2xl font-bold font-display mb-8">
           Live Now
         </h2>
         <span className="text-[13px] tracking-wide text-pitch-muted">
@@ -18,7 +18,7 @@ export default async function LiveMatch() {
         </span>
       </div>
 
-      <div className="pitch-glass rounded-xl-plus p-6">
+      <div className="pitch-glass rounded-xl-plus p-7">
         <header className="flex justify-between items-center">
           <h3 className="text-[11px] font-medium uppercase tracking-wide text-pitch-muted">
             Premier League · Emirates Stadium
@@ -37,7 +37,7 @@ export default async function LiveMatch() {
           {homeTeam && (
             <div className="flex items-center gap-2 md:gap-3 justify-end">
               <span className="text-sm md:text-base font-semibold text-pitch-text text-right">
-                {homeTeam.name}
+                {homeTeam.name} 
               </span>
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-pitch-accent/15 flex items-center justify-center overflow-hidden shrink-0">
                 <Image

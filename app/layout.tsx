@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import React from "react";
 import {
   Bricolage_Grotesque,
   Fraunces,
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   title: "KICKWARE",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
