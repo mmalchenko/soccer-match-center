@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const links = [
   { label: "Live",      href: "/live"      },
-  { label: "Fixtures",  href: "/fixtures"  },
+  { label: "Fixtures",  href: "/match/1"   },
   { label: "Leagues",   href: "/leagues"   },
   { label: "Standings", href: "/standings" },
   { label: "News",      href: "/news"      },
