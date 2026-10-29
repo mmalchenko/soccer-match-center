@@ -1,0 +1,28 @@
+const items = [
+  "Arsenal close in on top spot after derby win",
+  "Haaland closes gap in Golden Boot race",
+  "Champions League draw: what it means for the last 16",
+];
+
+export default function Trending() {
+  return (
+    <div className="pitch-glass rounded-lg-plus p-5 space-y-4">
+      <h3 className="text-sm font-bold font-display text-pitch-text">
+        Trending
+      </h3>
+
+      <ul className="flex flex-col gap-3">
+        {items.map((item, i) => (
+          <li key={i}>
+            <a
+              href="/news"
+              className="text-sm text-pitch-text hover:text-pitch-accent transition-colors leading-snug"
+            >
+              {item}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
