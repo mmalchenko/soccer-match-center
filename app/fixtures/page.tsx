@@ -40,7 +40,7 @@ export default function FixturesPage() {
   return (
     <div className="min-h-screen bg-pitch-bg bg-pitch-glow">
       <Header />
-      <main className="max-w-[860px] mx-auto px-5 py-6 lg:px-10 lg:py-8 flex flex-col gap-8">
+      <main className="max-w-[860] mx-auto px-5 py-6 lg:px-10 lg:py-8 flex flex-col gap-8">
 
         {/* Page title */}
         <div className="flex items-baseline gap-4">

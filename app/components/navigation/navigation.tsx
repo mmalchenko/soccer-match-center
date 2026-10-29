@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const links = [
-  { label: "Live",      href: "/live"      },
+  { label: "Live",      href: "/"      },
   { label: "Fixtures",  href: "/match/1"   },
   { label: "Leagues",   href: "/leagues"   },
   { label: "Standings", href: "/standings" },

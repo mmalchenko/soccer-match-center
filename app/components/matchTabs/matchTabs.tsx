@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 const TABS = ["Summary", "Lineups", "Stats", "Head-to-Head"] as const;
 type Tab = typeof TABS[number];
 
