@@ -34,7 +34,7 @@ export default function MatchPage() {
         <UserPortal />
       </header>
 
-      <main className="max-w-[900px] mx-auto px-5 py-6 lg:px-10 lg:py-8 flex flex-col gap-5">
+      <main className="max-w-[900] mx-auto px-5 py-6 lg:px-10 lg:py-8 flex flex-col gap-5">
 
         {/* Hero */}
         <MatchHero />

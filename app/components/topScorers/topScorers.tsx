@@ -7,9 +7,7 @@ const scorers = [
 export default function TopScorers() {
   return (
     <div className="pitch-glass rounded-lg-plus p-5 space-y-4">
-      <h3 className="text-sm font-bold font-display text-pitch-text">
-        Top Scorers
-      </h3>
+      <h3 className="card-heading">Top Scorers</h3>
 
       <div className="flex flex-col gap-4">
         {scorers.map(({ name, club, goals, pct }) => (
@@ -19,13 +17,10 @@ export default function TopScorers() {
                 <span className="text-sm font-semibold text-pitch-text">{name}</span>
                 <span className="text-xs text-pitch-muted"> · {club}</span>
               </div>
-              <span className="font-mono text-sm font-bold text-pitch-text">{goals}</span>
+              <span className="stat-value text-sm">{goals}</span>
             </div>
             <div className="h-1 rounded-full overflow-hidden bg-pitch-border">
-              <div
-                className="h-full bg-pitch-accent rounded-full transition-all duration-300"
-                style={{ width: `${pct}%` }}
-              />
+              <div className="h-full bg-pitch-accent rounded-full transition-all duration-300" style={{ width: `${pct}%` }} />
             </div>
           </div>
         ))}

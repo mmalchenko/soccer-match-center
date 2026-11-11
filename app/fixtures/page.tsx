@@ -40,11 +40,11 @@ export default function FixturesPage() {
   return (
     <div className="min-h-screen bg-pitch-bg bg-pitch-glow">
       <Header />
-      <main className="max-w-[860px] mx-auto px-5 py-6 lg:px-10 lg:py-8 flex flex-col gap-8">
+      <main className="max-w-[860] mx-auto px-5 py-6 lg:px-10 lg:py-8 flex flex-col gap-8">
 
         {/* Page title */}
         <div className="flex items-baseline gap-4">
-          <h1 className="text-2xl md:text-3xl font-bold font-display text-pitch-text">Fixtures</h1>
+          <h1 className="page-heading md:text-3xl">Fixtures</h1>
           <span className="text-[13px] tracking-wide text-pitch-muted">Upcoming matches</span>
         </div>
 
@@ -52,9 +52,7 @@ export default function FixturesPage() {
         {fixtures.map(({ date, matches }) => (
           <section key={date} className="flex flex-col gap-3">
             {/* Date heading */}
-            <h2 className="text-[11px] font-semibold uppercase tracking-widest text-pitch-muted border-b border-pitch-border pb-2">
-              {date}
-            </h2>
+            <h2 className="section-label border-b border-pitch-border pb-2">{date}</h2>
 
             {/* Fixture rows */}
             <div className="flex flex-col">
@@ -64,7 +62,7 @@ export default function FixturesPage() {
                   className="flex items-center gap-4 py-3.5 border-b border-pitch-border last:border-0"
                 >
                   {/* Time */}
-                  <span className="font-mono text-xs text-pitch-muted w-12 shrink-0">{time}</span>
+                  <span className="stat-meta w-12 shrink-0">{time}</span>
 
                   {/* Teams */}
                   <div className="flex-1 flex items-center gap-2 text-sm font-semibold text-pitch-text">

@@ -1,38 +1,36 @@
 .header {
-  /* No font-size override — inherit body base (IBM Plex Sans / 16px) */
   font-weight: 500;
   border-bottom: 1px solid var(--pitch-border);
 }
 
 .search-box {
-    /* Body text-sm (13–14px) for input fields */
-    font-size: 0.875rem; /* 14px */
-    border: 1px solid var(--pitch-border);
-    border-radius: var(--radius-md-plus); /* 14px — input field radius */
-    color: var(--pitch-text);
+  font-size: 0.875rem; /* 14px */
+  border: 1px solid var(--pitch-border);
+  border-radius: var(--radius-md-plus); /* 14px — input field radius */
+  color: var(--pitch-text);
 
-    svg {
-        margin-right: 8px;
-    }
-    input:focus {
-        outline: none;
-    }
+  svg {
+    margin-right: 8px;
+  }
+  input:focus {
+    outline: none;
+  }
 }
 
 .user-portal {
-    background-color: var(--pitch-accent);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    position: relative;
+  background-color: var(--pitch-accent);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: relative;
 
-    strong {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--pitch-bg);
-    }
+  strong {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--pitch-bg);
+  }
 }

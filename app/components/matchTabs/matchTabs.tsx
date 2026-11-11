@@ -1,12 +1,7 @@
 "use client";
 
-const TABS = ["Summary", "Lineups", "Stats", "Head-to-Head"] as const;
-type Tab = typeof TABS[number];
-
-interface MatchTabsProps {
-  activeTab: Tab;
-  onTabChange: (tab: Tab) => void;
-}
+import type { Tab, MatchTabsProps } from "@/lib/types/ui";
+import { TABS } from "@/lib/types/ui";
 
 export type { Tab };
 

@@ -11,7 +11,7 @@ export default function Header() {
         <h1>
           <Link href="/">
             <Image
-              className="sm:w-[140px] lg:w-[200px] h-auto"
+              className="sm:w-[140] lg:w-[200] h-auto"
               src="/01-logo-horizontal-on-dark.svg"
               alt="Kickwire"
               width={200}

@@ -1,18 +1,7 @@
 import Link from "next/link";
+import type { MatchStatus, MatchCardData } from "@/lib/types/ui";
 
-export type MatchStatus = "live" | "ft" | "upcoming";
-
-export interface MatchCardData {
-  id?: string;
-  league: string;
-  homeTeam: { code: string; name: string };
-  awayTeam: { code: string; name: string };
-  status: MatchStatus;
-  minute?: string;
-  homeScore?: number;
-  awayScore?: number;
-  kickoff?: string;
-}
+export type { MatchStatus, MatchCardData };
 
 export default function MatchCard({ match }: { match: MatchCardData }) {
   const { id, league, homeTeam, awayTeam, status, minute, homeScore, awayScore, kickoff } = match;
@@ -21,7 +10,6 @@ export default function MatchCard({ match }: { match: MatchCardData }) {
     <Link href={id ? `/match/${id}` : "/match/1"} className="block group">
       <div className="pitch-card rounded-lg-plus p-4 flex flex-col gap-3 group-hover:border-pitch-muted/40 transition-colors">
 
-        {/* Card header */}
         <div className="flex justify-between items-center">
           <span className="text-[10px] font-semibold uppercase tracking-widest text-pitch-muted">
             {league}
@@ -43,7 +31,6 @@ export default function MatchCard({ match }: { match: MatchCardData }) {
           )}
         </div>
 
-        {/* Teams + scores */}
         <div className="flex flex-col gap-2">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
