@@ -10,7 +10,7 @@ export default async function LiveMatch() {
   return (
     <>
       <div className="flex items-baseline gap-4">
-        <h2 className="md:text-2xl font-bold font-display mb-8">
+        <h2 className="md:text-2xl font-bold font-display">
           Live Now
         </h2>
         <span className="text-[13px] tracking-wide text-pitch-muted">

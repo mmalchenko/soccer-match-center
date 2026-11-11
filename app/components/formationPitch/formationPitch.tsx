@@ -61,7 +61,7 @@ export default function FormationPitch() {
 
       {/* Pitch */}
       <div
-        className="relative w-full mx-auto"
+        className="relative w-full"
         style={{ aspectRatio: "16/9", background: "linear-gradient(to right, #1a3d25, #1e4a2d, #1a3d25)" }}
       >
         {/* Pitch markings */}

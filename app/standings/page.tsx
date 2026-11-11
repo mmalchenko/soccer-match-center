@@ -84,7 +84,7 @@ export default function StandingsPage() {
         <UserPortal />
       </header>
 
-      <main className="px-5 py-6 lg:px-10 lg:py-8 grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-6 max-w-[1100] mx-auto">
+      <main className="px-5 py-6 lg:px-10 lg:py-8 grid grid-cols-1 lg:grid-cols-[1fr_260px] gap-6 max-w-[1100px] mx-auto">
 
         {/* Left — table */}
         <section className="flex flex-col gap-5">
