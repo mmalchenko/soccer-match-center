@@ -1,38 +1,86 @@
+import type {
+  Team,
+  StandingRow,
+  StandingsApiEntry,
+  Fixture,
+  FixtureStatistics,
+} from "@/lib/types/api";
+
+export type { Team, StandingRow, Fixture, FixtureStatistics };
+
 const BASE_URL = "https://v3.football.api-sports.io";
 
 function getHeaders(): HeadersInit {
-    return {
-        "x-apisports-key": process.env.API_SPORTS_KEY ?? "",
-    };
+  return { "x-apisports-key": process.env.API_SPORTS_KEY ?? "" };
 }
 
-export interface Team {
-    id: number;
-    name: string;
-    logo: string;
+async function apiFetch<T>(
+  path: string,
+  params: Record<string, string | number> = {},
+  revalidate = 3600,
+): Promise<T[]> {
+  const qs = new URLSearchParams(
+    Object.entries(params).map(([k, v]) => [k, String(v)]),
+  ).toString();
+  const url = `${BASE_URL}/${path}${qs ? `?${qs}` : ""}`;
+  const res = await fetch(url, {
+    method: "GET",
+    headers: getHeaders(),
+    next: { revalidate },
+  });
+  if (!res.ok) {
+    console.error(`[football API] ${path} → ${res.status} ${res.statusText}`);
+    return [];
+  }
+  const json: { response: T[] } = await res.json();
+  return json.response;
 }
 
-interface TeamResponse {
-    team: Team;
-}
-
-interface TeamsApiResponse {
-    response: TeamResponse[];
-}
-
+/* Teams */
 export async function getTeamById(id: number): Promise<Team | null> {
-    const res = await fetch(`${BASE_URL}/teams?id=${id}`, {
-        method: "GET",
-        headers: getHeaders(),
-        next: { revalidate: 120 },
-    });
+  const rows = await apiFetch<{ team: Team }>("teams", { id });
+  return rows[0]?.team ?? null;
+}
 
-    if (!res.ok) {
-        console.error("[football API] bad response:", res.status, res.statusText);
-        return null;
-    }
+/* Standings */
+export async function getStandings(
+  leagueId: number,
+  season: number,
+): Promise<StandingRow[]> {
+  const rows = await apiFetch<StandingsApiEntry>("standings", {
+    league: leagueId,
+    season,
+  });
+  return rows[0]?.league.standings[0] ?? [];
+}
 
-    const data: TeamsApiResponse = await res.json();
-    console.log("[football API] response:", JSON.stringify(data, null, 2));
-    return data.response[0]?.team ?? null;
+/* Fixtures */
+export async function getUpcomingFixtures(
+  leagueId: number,
+  season: number,
+  count = 10,
+): Promise<Fixture[]> {
+  return apiFetch<Fixture>("fixtures", {
+    league: leagueId,
+    season,
+    next: count,
+  });
+}
+
+export async function getLiveFixtures(): Promise<Fixture[]> {
+  return apiFetch<Fixture>("fixtures", { live: "all" }, 3600);
+}
+
+export async function getFixtureById(id: number): Promise<Fixture | null> {
+  const rows = await apiFetch<Fixture>("fixtures", { id });
+  return rows[0] ?? null;
+}
+
+/* Fixture statistics */
+export async function getFixtureStatistics(
+  fixtureId: number,
+): Promise<FixtureStatistics[]> {
+  return apiFetch<FixtureStatistics>("fixtures/statistics", {
+    fixture: fixtureId,
+  });
 }

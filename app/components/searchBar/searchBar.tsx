@@ -6,19 +6,16 @@ import { IoSearch } from "react-icons/io5";
 export default function SearchBar() {
   const [searchItem, setSearchItem] = useState("");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchItem(e.target.value);
-  };
-
   return (
-    <div className="flex items-center gap-1 px-3 py-2 lg:w-[240] text-sm border border-pitch-border rounded-sm-plus text-pitch-text">
-      <IoSearch className="text-pitch-muted" />
+    <div className="search-box flex items-center gap-2 px-3 py-2 lg:w-[240]">
+      <IoSearch />
+      {/* ToDo: Write the unctionality */}
       <input
         type="text"
         value={searchItem}
-        onChange={handleInputChange}
+        onChange={(e) => setSearchItem(e.target.value)}
         placeholder="Search teams, leagues..."
-        className="outline-none w-full placeholder:text-pitch-muted"
+        className="bg-transparent w-full"
       />
     </div>
   );

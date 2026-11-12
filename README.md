@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kickwire — Soccer Match Center
+
+A football dashboard built with Next.js 16, React 19, and Tailwind CSS v4. Covers live scores, standings, fixtures, and match detail pages with real data from API-Football v3.
+
+## Tech Stack
+- **Framework** — Next.js 16 (App Router)
+- **Language** — TypeScript 5
+- **Styling** — Tailwind CSS v4 with `@utility` and `@theme inline`
+- **Data** — API-Football v3 (api-sports.io)
+- **Fonts** — IBM Plex Sans, IBM Plex Mono, Bricolage Grotesque, Fraunces
 
 ## Getting Started
-
-First, run the development server:
+**1. Clone and install**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/mmalchenko/soccer-match-center.git
+cd soccer-match-center
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**2. Add your API key**
+Create `.env.local` in the project root:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+API_SPORTS_KEY=your_api_key_here
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Get a free key at [api-sports.io](https://api-sports.io). Free tier: 100 requests/day.
 
-## Learn More
+**3. Start the dev server**
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Pages
+| Route | Description |
+|---|---|
+| `/` | Home — live match hero, match grid, upcoming fixtures, sidebar |
+| `/match/[id]` | Match detail — score, formation, stats, events, H2H, odds |
+| `/standings` | League table with form indicators and zone colors |
+| `/fixtures` | Upcoming fixtures grouped by date |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
+app/
+  components/
+    header/             Site header — logo, nav, search, avatar
+    liveMatch/          Hero match card with live score and stats (API)
+    matchGrid/          Grid of live/finished/upcoming match cards (API)
+    matchCard/          Reusable compact match card, links to match detail
+    upcomingFixtures/   Upcoming fixtures list (API)
+    leagueTable/        Premier League table widget (API)
+    topScorers/         Top scorers widget
+    trending/           Trending news links
+    matchHero/          Match detail hero with score and live badge
+    formationPitch/     SVG pitch with player positions
+    matchStats/         Stat comparison bars
+    matchEvents/        Goal / card / sub timeline
+    headToHead/         Last 5 H2H results
+    winPrediction/      Win probability tri-bar
+    liveOdds/           1/X/2 odds display
+    sidebar/            Right-column widget container
+  fixtures/             /fixtures page
+  standings/            /standings page
+  match/[id]/           Match detail page
+  globals.css           Tailwind v4 imports, design tokens, base reset
+  dark.theme.css        @utility classes (pitch-glass, card-heading, etc.)
+  light.theme.css       Editorial light theme utilities
 
-## Deploy on Vercel
+lib/
+  api/
+    football.ts         All API-Football v3 fetch functions
+  types/
+    api.ts              API response interfaces (Team, Fixture, StandingRow)
+    ui.ts               Component types (MatchCardData, MatchEvent, Player)
+  data/
+    match.ts            Static fallback data for match detail
+    matches.ts          Static fallback data for match grid
+    standings.ts        Static fallback data for standings sidebar
+    fixtures.ts         Static fallback data for fixtures page
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## API Endpoints
+| Function | Endpoint | Used by |
+|---|---|---|
+| `getStandings` | `GET /standings` | Standings page, LeagueTable widget |
+| `getUpcomingFixtures` | `GET /fixtures?next=` | UpcomingFixtures widget |
+| `getLiveFixtures` | `GET /fixtures?live=all` | MatchGrid (30s ISR) |
+| `getFixtureById` | `GET /fixtures?id=` | LiveMatch hero |
+| `getFixtureStatistics` | `GET /fixtures/statistics` | LiveMatch stats bar |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All requests use Next.js ISR. Live data revalidates every 3600 seconds. Components fall back to static data when the API is unavailable.
+
+## Design System
+Tailwind CSS v4 — no `tailwind.config.js` (v4 does not use it). Tokens are defined as CSS custom properties in `globals.css` and registered via `@theme inline`. Reusable patterns are extracted into `@utility` classes in `dark.theme.css`.
+
+Two themes are defined:
+- **Pitch Dark** (default) — dark green/charcoal with accent `#35E27A`
+- **Editorial Light** — warm cream palette (tokens ready, switcher not yet implemented)
