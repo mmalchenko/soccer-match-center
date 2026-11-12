@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Match Center — KICKWIRE",
+};
+
 import MatchHero from "@/app/components/matchHero/matchHero";
 import WinPrediction from "@/app/components/winPrediction/winPrediction";
 import LiveOdds from "@/app/components/liveOdds/liveOdds";

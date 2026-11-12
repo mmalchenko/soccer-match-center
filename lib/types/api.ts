@@ -1,17 +1,13 @@
-export interface StandingsApiEntry {
-  league: {
-    standings: StandingRow[][];
-  };
-}
+/* ─── Teams ──────────────────────────────────────────────────── */
 
-/* Teams */
 export interface Team {
   id: number;
   name: string;
   logo: string;
 }
 
-/* Standings */
+/* ─── Standings ──────────────────────────────────────────────── */
+
 export interface StandingTeam {
   id: number;
   name: string;
@@ -28,7 +24,14 @@ export interface StandingRow {
   all: { played: number; win: number; draw: number; lose: number };
 }
 
-/* Fixtures */
+export interface StandingsApiEntry {
+  league: {
+    standings: StandingRow[][];
+  };
+}
+
+/* ─── Fixtures ───────────────────────────────────────────────── */
+
 export interface FixtureTeam {
   id: number;
   name: string;
@@ -39,19 +42,36 @@ export interface Fixture {
   fixture: {
     id: number;
     date: string;
-    status: { short: string };
+    status: { short: string; elapsed: number | null };
   };
   league: {
     id: number;
     name: string;
     country: string;
+    round: string;
   };
   teams: {
-    home: FixtureTeam;
-    away: FixtureTeam;
+    home: FixtureTeam & { winner: boolean | null };
+    away: FixtureTeam & { winner: boolean | null };
   };
   goals: {
     home: number | null;
     away: number | null;
   };
+  score: {
+    halftime: { home: number | null; away: number | null };
+    fulltime: { home: number | null; away: number | null };
+  };
+}
+
+/* ─── Fixture statistics ─────────────────────────────────────── */
+
+export interface FixtureStat {
+  type: string;
+  value: number | string | null;
+}
+
+export interface FixtureStatistics {
+  team: FixtureTeam;
+  statistics: FixtureStat[];
 }

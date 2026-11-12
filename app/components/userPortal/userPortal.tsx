@@ -1,6 +1,3 @@
-import "../header/header.scss";
-
-// ToDo
 export default function UserPortal() {
   return (
     <div className="user-portal">

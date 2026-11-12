@@ -116,3 +116,50 @@
   letter-spacing: 0.05em;
   color: var(--pitch-muted);
 }
+
+/* ─── Header component utilities (migrated from header.scss) ─── */
+
+/*
+  User avatar circle.
+  Usage: <div class="user-portal"><strong>MM</strong></div>
+*/
+@utility user-portal {
+  position: relative;
+  background-color: var(--pitch-accent);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+
+  strong {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--pitch-bg);
+  }
+}
+
+/*
+  Search input wrapper.
+  Usage: <div class="search-box flex items-center gap-2 px-3 py-2">
+*/
+@utility search-box {
+  font-size: 0.875rem;
+  border: 1px solid var(--pitch-border);
+  border-radius: var(--radius-md-plus);
+  color: var(--pitch-text);
+
+  svg {
+    color: var(--pitch-muted);
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  input::placeholder {
+    color: var(--pitch-muted);
+  }
+}

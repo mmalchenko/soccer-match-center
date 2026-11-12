@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Header from "@/app/components/header/header";
+
+export const metadata: Metadata = {
+  title: "Fixtures — KICKWIRE",
+};
+
 
 const fixtures = [
   {
