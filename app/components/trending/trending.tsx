@@ -1,8 +1,4 @@
-const items = [
-  "Arsenal close in on top spot after derby win",
-  "Haaland closes gap in Golden Boot race",
-  "Champions League draw: what it means for the last 16",
-];
+import { trendingItems as items } from "@/lib/data/match";
 
 export default function Trending() {
   return (
@@ -12,7 +8,10 @@ export default function Trending() {
       <ul className="flex flex-col gap-3">
         {items.map((item, i) => (
           <li key={i}>
-            <a href="/news" className="text-sm text-pitch-text hover:text-pitch-accent transition-colors leading-snug">
+            <a
+              href="/news"
+              className="text-sm text-pitch-text hover:text-pitch-accent transition-colors leading-snug"
+            >
               {item}
             </a>
           </li>

@@ -1,8 +1,4 @@
-const scorers = [
-  { name: "E. Haaland", club: "Man City", goals: 19, pct: 100 },
-  { name: "H. Kane",    club: "Bayern",   goals: 17, pct: 89  },
-  { name: "B. Saka",    club: "Arsenal",  goals: 14, pct: 74  },
-];
+import { topScorers as scorers } from "@/lib/data/match";
 
 export default function TopScorers() {
   return (

@@ -17,9 +17,13 @@ export default function MatchHero() {
         {/* Home */}
         <div className="flex flex-col items-center gap-2">
           <div className="w-14 h-14 rounded-full bg-pitch-accent/15 flex items-center justify-center">
-            <span className="text-base font-bold font-display text-pitch-accent">ARS</span>
+            <span className="text-base font-bold font-display text-pitch-accent">
+              ARS
+            </span>
           </div>
-          <span className="text-sm md:text-base font-semibold text-pitch-text text-center">Arsenal</span>
+          <span className="text-sm md:text-base font-semibold text-pitch-text text-center">
+            Arsenal
+          </span>
         </div>
 
         {/* Score */}
@@ -30,9 +34,13 @@ export default function MatchHero() {
         {/* Away */}
         <div className="flex flex-col items-center gap-2">
           <div className="w-14 h-14 rounded-full bg-pitch-gold/15 flex items-center justify-center">
-            <span className="text-base font-bold font-display text-pitch-gold">CHE</span>
+            <span className="text-base font-bold font-display text-pitch-gold">
+              CHE
+            </span>
           </div>
-          <span className="text-sm md:text-base font-semibold text-pitch-text text-center">Chelsea</span>
+          <span className="text-sm md:text-base font-semibold text-pitch-text text-center">
+            Chelsea
+          </span>
         </div>
       </div>
 

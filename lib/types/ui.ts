@@ -1,5 +1,4 @@
-/* ─── MatchCard ──────────────────────────────────────────────── */
-
+/* MatchCard */
 export type MatchStatus = "live" | "ft" | "upcoming";
 
 export interface MatchCardData {
@@ -14,8 +13,7 @@ export interface MatchCardData {
   kickoff?: string;
 }
 
-/* ─── MatchEvents ────────────────────────────────────────────── */
-
+/* MatchEvents */
 export type EventType = "goal" | "yellow" | "red" | "sub";
 
 export interface MatchEvent {
@@ -25,26 +23,23 @@ export interface MatchEvent {
   description: string;
 }
 
-/* ─── MatchStats ─────────────────────────────────────────────── */
-
+/* MatchStats */
 export interface StatRow {
   label: string;
   home: number;
   away: number;
 }
 
-/* ─── MatchTabs ──────────────────────────────────────────────── */
-
+/* MatchTabs */
 export const TABS = ["Summary", "Lineups", "Stats", "Head-to-Head"] as const;
-export type Tab = typeof TABS[number];
+export type Tab = (typeof TABS)[number];
 
 export interface MatchTabsProps {
   activeTab: Tab;
   onTabChange: (tab: Tab) => void;
 }
 
-/* ─── FormationPitch ─────────────────────────────────────────── */
-
+/* FormationPitch */
 export interface Player {
   number: number;
   name: string;
@@ -52,16 +47,14 @@ export interface Player {
   y: number;
 }
 
-/* ─── HeadToHead ─────────────────────────────────────────────── */
-
+/* HeadToHead */
 export interface H2HResult {
   date: string;
   result: string;
   winner: "home" | "away" | "draw";
 }
 
-/* ─── Standings page ─────────────────────────────────────────── */
-
+/* Standings page */
 export type Form = "W" | "D" | "L";
 
 export interface StandingsPageRow {

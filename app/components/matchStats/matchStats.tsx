@@ -1,12 +1,4 @@
-import type { StatRow } from "@/lib/types/ui";
-
-const stats: StatRow[] = [
-  { label: "Possession",      home: 65, away: 35 },
-  { label: "Total Shots",     home: 14, away: 8  },
-  { label: "Shots on Target", home: 6,  away: 3  },
-  { label: "Corners",         home: 5,  away: 2  },
-  { label: "Fouls",           home: 8,  away: 11 },
-];
+import { matchStats as stats } from "@/lib/data/match";
 
 export default function MatchStats() {
   return (

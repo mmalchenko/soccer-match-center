@@ -1,13 +1,17 @@
-/* ─── Teams ──────────────────────────────────────────────────── */
+export interface StandingsApiEntry {
+  league: {
+    standings: StandingRow[][];
+  };
+}
 
+/* Teams */
 export interface Team {
   id: number;
   name: string;
   logo: string;
 }
 
-/* ─── Standings ──────────────────────────────────────────────── */
-
+/* Standings */
 export interface StandingTeam {
   id: number;
   name: string;
@@ -24,15 +28,7 @@ export interface StandingRow {
   all: { played: number; win: number; draw: number; lose: number };
 }
 
-/** Internal — not exported outside the API layer */
-export interface StandingsApiEntry {
-  league: {
-    standings: StandingRow[][];
-  };
-}
-
-/* ─── Fixtures ───────────────────────────────────────────────── */
-
+/* Fixtures */
 export interface FixtureTeam {
   id: number;
   name: string;

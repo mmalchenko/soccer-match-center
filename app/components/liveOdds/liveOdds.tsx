@@ -1,10 +1,6 @@
-export default function LiveOdds() {
-  const main = [
-    { label: "1", value: "1.85" },
-    { label: "X", value: "3.60" },
-    { label: "2", value: "4.20" },
-  ];
+import { mainOdds as main } from "@/lib/data/match";
 
+export default function LiveOdds() {
   return (
     <div className="pitch-glass rounded-lg-plus p-5 space-y-4">
       <div className="flex justify-between items-center">

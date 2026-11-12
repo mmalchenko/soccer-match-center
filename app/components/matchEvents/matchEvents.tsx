@@ -1,17 +1,10 @@
-import type { EventType, MatchEvent } from "@/lib/types/ui";
-
-const events: MatchEvent[] = [
-  { minute: 78, type: "goal",   team: "home", description: "B. Saka (Arsenal), assist Ødegaard" },
-  { minute: 64, type: "yellow", team: "away", description: "M. Caicedo (Chelsea)" },
-  { minute: 58, type: "sub",    team: "home", description: "Trossard on for Havertz (Arsenal)" },
-  { minute: 41, type: "goal",   team: "away", description: "C. Palmer (Chelsea), penalty" },
-  { minute: 23, type: "goal",   team: "home", description: "G. Jesus (Arsenal)" },
-];
+import type { EventType } from "@/lib/types/ui";
+import { matchEvents } from "@/lib/data/match";
 
 const icons: Record<EventType, { symbol: string; color: string }> = {
-  goal:   { symbol: "⚽", color: "bg-pitch-accent" },
-  yellow: { symbol: "🟨", color: "bg-pitch-gold" },
-  red:    { symbol: "🟥", color: "bg-pitch-live" },
+  goal:   { symbol: "⚽", color: "bg-pitch-accent"   },
+  yellow: { symbol: "🟨", color: "bg-pitch-gold"     },
+  red:    { symbol: "🟥", color: "bg-pitch-live"     },
   sub:    { symbol: "↕",  color: "bg-pitch-muted/30" },
 };
 
@@ -21,7 +14,7 @@ export default function MatchEvents() {
       <h3 className="card-heading">Match Events</h3>
 
       <div className="flex flex-col gap-3">
-        {events.map(({ minute, type, description }, i) => {
+        {matchEvents.map(({ minute, type, description }, i) => {
           const { symbol, color } = icons[type];
           return (
             <div key={i} className="flex items-start gap-3">
