@@ -1,13 +1,11 @@
-/* ─── Teams ──────────────────────────────────────────────────── */
-
+/* Teams */
 export interface Team {
   id: number;
   name: string;
   logo: string;
 }
 
-/* ─── Standings ──────────────────────────────────────────────── */
-
+/* Standings */
 export interface StandingTeam {
   id: number;
   name: string;
@@ -30,8 +28,7 @@ export interface StandingsApiEntry {
   };
 }
 
-/* ─── Fixtures ───────────────────────────────────────────────── */
-
+/* Fixtures */
 export interface FixtureTeam {
   id: number;
   name: string;
@@ -64,8 +61,7 @@ export interface Fixture {
   };
 }
 
-/* ─── Fixture statistics ─────────────────────────────────────── */
-
+/* Fixture statistics */
 export interface FixtureStat {
   type: string;
   value: number | string | null;

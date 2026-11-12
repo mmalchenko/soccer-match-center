@@ -17,7 +17,7 @@ function getHeaders(): HeadersInit {
 async function apiFetch<T>(
   path: string,
   params: Record<string, string | number> = {},
-  revalidate = 120,
+  revalidate = 3600,
 ): Promise<T[]> {
   const qs = new URLSearchParams(
     Object.entries(params).map(([k, v]) => [k, String(v)]),
@@ -36,15 +36,13 @@ async function apiFetch<T>(
   return json.response;
 }
 
-/* ─── Teams ──────────────────────────────────────────────────── */
-
+/* Teams */
 export async function getTeamById(id: number): Promise<Team | null> {
   const rows = await apiFetch<{ team: Team }>("teams", { id });
   return rows[0]?.team ?? null;
 }
 
-/* ─── Standings ──────────────────────────────────────────────── */
-
+/* Standings */
 export async function getStandings(
   leagueId: number,
   season: number,
@@ -56,19 +54,21 @@ export async function getStandings(
   return rows[0]?.league.standings[0] ?? [];
 }
 
-/* ─── Fixtures ───────────────────────────────────────────────── */
-
+/* Fixtures */
 export async function getUpcomingFixtures(
   leagueId: number,
   season: number,
   count = 10,
 ): Promise<Fixture[]> {
-  return apiFetch<Fixture>("fixtures", { league: leagueId, season, next: count });
+  return apiFetch<Fixture>("fixtures", {
+    league: leagueId,
+    season,
+    next: count,
+  });
 }
 
 export async function getLiveFixtures(): Promise<Fixture[]> {
-  // Live fixtures change every 30s — short revalidate
-  return apiFetch<Fixture>("fixtures", { live: "all" }, 30);
+  return apiFetch<Fixture>("fixtures", { live: "all" }, 3600);
 }
 
 export async function getFixtureById(id: number): Promise<Fixture | null> {
@@ -76,8 +76,7 @@ export async function getFixtureById(id: number): Promise<Fixture | null> {
   return rows[0] ?? null;
 }
 
-/* ─── Fixture statistics ─────────────────────────────────────── */
-
+/* Fixture statistics */
 export async function getFixtureStatistics(
   fixtureId: number,
 ): Promise<FixtureStatistics[]> {

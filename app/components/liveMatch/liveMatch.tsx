@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { getFixtureById, getFixtureStatistics } from "@/lib/api/football";
 
-// Arsenal vs Chelsea — Premier League 2024/25
-// Replace with a dynamic fixture ID once live fixture selection is implemented
+// ToDo: Replace with a dynamic fixture ID once live fixture selection is implemented
 const FIXTURE_ID = 1297536;
 
 function getStat(
@@ -24,12 +23,14 @@ export default async function LiveMatch() {
   const awayTeam = fixture?.teams.away;
   const homeGoals = fixture?.goals.home ?? 0;
   const awayGoals = fixture?.goals.away ?? 0;
-  const elapsed   = fixture?.fixture.status.elapsed ?? null;
-  const isLive    = fixture?.fixture.status.short === "1H" ||
-                    fixture?.fixture.status.short === "2H" ||
-                    fixture?.fixture.status.short === "ET";
+  const elapsed = fixture?.fixture.status.elapsed ?? null;
+  const isLive =
+    fixture?.fixture.status.short === "1H" ||
+    fixture?.fixture.status.short === "2H" ||
+    fixture?.fixture.status.short === "ET";
 
-  const homePoss = Number(String(getStat(stats, 0, "Ball Possession")).replace("%", "")) || 65;
+  const homePoss =
+    Number(String(getStat(stats, 0, "Ball Possession")).replace("%", "")) || 65;
   const awayPoss = 100 - homePoss;
   const homeShots = getStat(stats, 0, "Shots on Goal");
   const awayShots = getStat(stats, 1, "Shots on Goal");
@@ -50,7 +51,8 @@ export default async function LiveMatch() {
       <div className="pitch-glass rounded-xl-plus p-7">
         <header className="flex justify-between items-center">
           <h3 className="section-label">
-            {fixture?.league.name ?? "Premier League"} · {fixture?.league.round ?? ""}
+            {fixture?.league.name ?? "Premier League"} ·{" "}
+            {fixture?.league.round ?? ""}
           </h3>
           {isLive && elapsed ? (
             <span className="inline-flex items-center gap-1.5 bg-pitch-live text-white text-xs font-bold pl-2.5 pr-3.5 py-1 rounded-full shadow-live">
@@ -67,14 +69,20 @@ export default async function LiveMatch() {
           )}
         </header>
 
-        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 md:gap-6 py-2">
+        <div className="grid items-center gap-3 md:gap-6 py-2">
           {homeTeam && (
             <div className="flex items-center gap-2 md:gap-3 justify-end">
               <span className="text-sm md:text-base font-semibold text-pitch-text text-right">
                 {homeTeam.name}
               </span>
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-pitch-accent/15 flex items-center justify-center overflow-hidden shrink-0">
-                <Image src={homeTeam.logo} alt={homeTeam.name} width={40} height={40} className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+                <Image
+                  src={homeTeam.logo}
+                  alt={homeTeam.name}
+                  width={40}
+                  height={40}
+                  className="w-8 h-8 md:w-10 md:h-10 object-contain"
+                />
               </div>
             </div>
           )}
@@ -86,7 +94,13 @@ export default async function LiveMatch() {
           {awayTeam && (
             <div className="flex items-center gap-2 md:gap-3 justify-start">
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-pitch-gold/15 flex items-center justify-center overflow-hidden shrink-0">
-                <Image src={awayTeam.logo} alt={awayTeam.name} width={40} height={40} className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+                <Image
+                  src={awayTeam.logo}
+                  alt={awayTeam.name}
+                  width={40}
+                  height={40}
+                  className="w-8 h-8 md:w-10 md:h-10 object-contain"
+                />
               </div>
               <span className="text-sm md:text-base font-semibold text-pitch-text">
                 {awayTeam.name}
@@ -99,24 +113,34 @@ export default async function LiveMatch() {
         <div className="space-y-1.5">
           <div className="flex justify-between">
             <span className="section-label">Possession</span>
-            <span className="section-label">{homePoss}% · {awayPoss}%</span>
+            <span className="section-label">
+              {homePoss}% · {awayPoss}%
+            </span>
           </div>
           <div className="flex h-1.5 rounded-full overflow-hidden bg-pitch-border">
-            <div className="bg-pitch-accent transition-all duration-300" style={{ width: `${homePoss}%` }} />
-            <div className="bg-pitch-gold transition-all duration-300"   style={{ width: `${awayPoss}%` }} />
+            <div
+              className="bg-pitch-accent transition-all duration-300"
+              style={{ width: `${homePoss}%` }}
+            />
+            <div
+              className="bg-pitch-gold transition-all duration-300"
+              style={{ width: `${awayPoss}%` }}
+            />
           </div>
         </div>
 
         {/* Stats row */}
         <div className="grid grid-cols-3 gap-2 md:gap-2.5 text-center mt-4">
           {[
-            { label: "Shots on Target", home: homeShots,   away: awayShots   },
-            { label: "Corners",         home: homeCorners, away: awayCorners },
-            { label: "Cards",           home: homeCards,   away: awayCards   },
+            { label: "Shots on Target", home: homeShots, away: awayShots },
+            { label: "Corners", home: homeCorners, away: awayCorners },
+            { label: "Cards", home: homeCards, away: awayCards },
           ].map(({ label, home, away }) => (
             <div key={label} className="space-y-0.5">
               <p className="section-label">{label}</p>
-              <p className="stat-value text-sm md:text-base">{home} – {away}</p>
+              <p className="stat-value text-sm md:text-base">
+                {home} – {away}
+              </p>
             </div>
           ))}
         </div>

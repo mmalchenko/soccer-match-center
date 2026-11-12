@@ -1,63 +1,35 @@
-﻿/* Pitch Dark — theme layer */
-
-/*
-  Ambient page glow — applied via bg-pitch-glow utility (registered in @theme).
-  Use on the page root: <div class="bg-pitch-bg bg-pitch-glow">
-*/
-
-/*
-  Glass card — primary Pitch Dark card surface.
-  background: rgba(20,26,24,0.66) · backdrop-blur: 18px · border: 1px rgba(255,255,255,0.07)
-  Pair with rounded-lg-plus (standard) or rounded-xl-plus (hero).
-*/
-@utility pitch-glass {
+﻿@utility pitch-glass {
   background-color: rgba(20, 26, 24, 0.66);
   backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* Team crest avatar circle */
 @utility mask {
   border-radius: 50%;
   width: 75px;
   height: 75px;
 }
 
-/* Solid card — input fields, table backgrounds */
 @utility pitch-card {
   background-color: var(--pitch-surface);
   border: 1px solid var(--pitch-border);
 }
 
-/* Inset surface — nested elements, pill backgrounds */
 @utility pitch-inset {
   background-color: var(--pitch-surface-2);
 }
 
-/*
-  LIVE badge — red glow included.
-  Usage: <span class="pitch-live-badge inline-flex items-center gap-1.5
-                       text-xs font-bold pl-2.5 pr-3.5 py-1 rounded-full">
-*/
 @utility pitch-live-badge {
   background-color: var(--pitch-live);
   color: #ffffff;
   box-shadow: 0 0 18px rgba(255, 75, 75, 0.55);
 }
 
-/*
-  FT / neutral status badge.
-  Usage: <span class="pitch-ft-badge text-xs font-semibold px-2 py-0.5 rounded-full">FT</span>
-*/
 @utility pitch-ft-badge {
   background-color: var(--pitch-surface-2);
   color: var(--pitch-muted);
 }
 
-/*
-  Primary CTA button — green accent gradient.
-  Usage: <button class="pitch-btn-primary h-11 px-5 rounded-xl text-sm font-bold">
-*/
 @utility pitch-btn-primary {
   background-image: linear-gradient(
     to bottom right,
@@ -67,18 +39,12 @@
   color: var(--pitch-bg);
 }
 
-/*
-  Ghost / outline button.
-  Usage: <button class="pitch-btn-ghost h-11 px-5 rounded-xl text-sm font-medium">
-*/
 @utility pitch-btn-ghost {
   border: 1px solid var(--pitch-border);
   color: var(--pitch-muted);
 }
 
-/* ─── Typography utilities ───────────────────────────────────── */
-
-/* Card section heading: "Match Statistics", "Top Scorers", etc. */
+/* Typography utilities */
 @utility card-heading {
   font-size: 0.875rem;
   font-weight: 700;
@@ -86,7 +52,6 @@
   color: var(--pitch-text);
 }
 
-/* Page / section heading: "Live Now", "Upcoming Fixtures", etc. */
 @utility page-heading {
   font-size: 1.25rem;
   font-weight: 700;
@@ -94,21 +59,18 @@
   color: var(--pitch-text);
 }
 
-/* Mono stat value: scores, points, goals */
 @utility stat-value {
   font-family: var(--font-mono);
   font-weight: 700;
   color: var(--pitch-text);
 }
 
-/* Mono muted label: times, positions, played counts */
 @utility stat-meta {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--pitch-muted);
 }
 
-/* ALL-CAPS section label: "POSSESSION", "LA LIGA", minute labels */
 @utility section-label {
   font-size: 0.6875rem;
   font-weight: 500;
@@ -117,12 +79,7 @@
   color: var(--pitch-muted);
 }
 
-/* ─── Header component utilities (migrated from header.scss) ─── */
-
-/*
-  User avatar circle.
-  Usage: <div class="user-portal"><strong>MM</strong></div>
-*/
+/* Header component utilities */
 @utility user-portal {
   position: relative;
   background-color: var(--pitch-accent);
@@ -141,10 +98,6 @@
   }
 }
 
-/*
-  Search input wrapper.
-  Usage: <div class="search-box flex items-center gap-2 px-3 py-2">
-*/
 @utility search-box {
   font-size: 0.875rem;
   border: 1px solid var(--pitch-border);
